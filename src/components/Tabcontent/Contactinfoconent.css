@@ -1,0 +1,10 @@
+.personal-info-btn{
+ background-color: #8C30F5;
+  color: white;
+  display:flex;
+  align-items: center;
+  font-family: 'inter';
+  font-size: 22px;
+  border-radius: 14px;
+   width: 32%;
+}

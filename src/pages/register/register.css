@@ -1,0 +1,101 @@
+.home-container{
+    background-color: black;
+    /* min-height: 87vh; */
+}
+.home-container{
+    display: flex;
+    justify-content: center;    
+    align-items: center ;
+    flex-direction: column;
+    
+} 
+.input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-container input{
+    background-color: black;
+    height: 40px;
+    border: 1px solid #ffffff;
+    padding: 2px;
+    border-radius: 5px;
+    width: 400px;
+    margin-bottom: 20px;
+    padding-left: 6px;
+}
+  .login-btn-bottom{
+      background-color: #8C30F5;
+      min-width: 150px;
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 10px;
+  }
+  .forgot-password{
+    color: white;
+    text-align: center;
+  }
+  .forgot-password:hover{
+     cursor: pointer;
+     text-decoration: underline;
+  }
+  .login-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .login-form-container img {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  .home-bootm-links ul li{
+    display:inline; 
+    color: white;
+    margin-right: 10px;
+    font-size: 15px;
+    font-family: 'Inter';
+  }
+  .home-bootm-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-bottom-container{
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .page-line{
+    color: white;
+  }
+  .login-footer-container{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+
+ 
+  }
+  .social-icon-container  {
+    display: flex;
+    float: right;
+  
+  
+  }
+  .social-icon-container div{
+    background-color: rgb(46, 46, 46);
+    padding: 6px;
+    border-radius: 50%;
+  }
+  .copy-right-text{
+    font-size: 14px;
+    font-family: 'Inter';
+  }

@@ -1,0 +1,7 @@
+/* body::-webkit-scrollbar {
+  display: none;
+} */
+
+.flow-x-hidden {
+  overflow-x: none;
+}

@@ -1,0 +1,31 @@
+{
+  "personalInfo": {
+    "name": "Hugo Galindo",
+    "titlePosition": "Account Manager",
+    "busniessName": "Nunez Office installiation",
+    "phoneNumber": "7476090334",
+    "email": "Hugo@teamnoi.com",
+    "homePage": "www.Mydatacard.com/noi/c3",
+    "coverImage": "./image",
+    "profileImage": "./image/logo"
+  },
+  "socialQuickAccess": [
+    {
+      "icon": "whatsappIcon",
+      "label": "Phone",
+      "value": "0930399234494"
+    }
+  ],
+
+  "links": [],
+
+  "About": {
+    "tile": "About us",
+    "description": {
+      "paragraphs": [],
+      "fontWeight": "bold",
+      "fontStyle": "italic",
+      "align": "center"
+    }
+  }
+}

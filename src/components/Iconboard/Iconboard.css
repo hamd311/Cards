@@ -1,0 +1,21 @@
+.add-social-icon-modal{
+    position: absolute;
+    top: 15;
+    top: 45%;
+    left: 30%;
+    border-radius: 7px;
+    width: 38%;
+}
+
+@media screen and (max-width: 580px) {
+
+    .add-social-icon-modal{
+        position: absolute;
+        top: 15;
+        top: 43%;
+        left: 11%;
+        border-radius: 7px;
+        width: 80%;
+      }
+    
+}

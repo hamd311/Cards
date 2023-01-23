@@ -1,0 +1,16 @@
+.login-btn{
+      background-color: #8C30F5;
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    
+}
+.nav-elements li{
+    display: flex;
+    align-items: center;
+}
+.nav-height{
+    height: 72px;
+}
