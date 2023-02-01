@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import mobileImg1 from "../../assets/mobile1.svg"
 import mobileImg2 from "../../assets/mobile2.svg"
-const Themescontent = () => {
+const Themescontent = (props) => {
+
+  console.log("props",props)
   const [themeImage, setThemeImage] = useState(["./images/viewcard-1.png"]);
   return (
     <div className="py-2">

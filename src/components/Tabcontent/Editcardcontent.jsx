@@ -5,8 +5,16 @@ import Appeareancecontent from "./Appeareancecontent";
 import Contactinfoconent from "./Contactinfoconent";
 import Contentcontent from "./Contentcontent";
 import eyeicon from "../../assets/icons/eye.svg";
+import { useState } from "react";
 
 const Editcardcontent = () => {
+      
+    const[card,setCard] = useState({
+          theme:1,
+          bgColor:"#000000",
+          fontColor:"#ffffff"
+        })
+    
   return (
     <div className="flex h-full w-full flex-col lg:flex-row">
       <button
@@ -25,7 +33,10 @@ const Editcardcontent = () => {
         <Tab
           tabs={["Appeareance", "Contact info", "Content"]}
           tabcontent={[
-            <Appeareancecontent />,
+            <Appeareancecontent 
+            card={card}
+            setCard={setCard}
+            />,
             <Contactinfoconent />,
             <Contentcontent />,
           ]}
@@ -34,7 +45,10 @@ const Editcardcontent = () => {
         />
       </div>
       <div className="lg:w-2/6 w-full h-full hidden sm:block ">
-        <Viewcard />
+        <Viewcard 
+             card={card}
+             setCard={setCard}
+        />
       </div>
     </div>
   );

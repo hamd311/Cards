@@ -30,12 +30,12 @@ const DashboardSideBar = (props) => {
   };
   return (
     <div
-      className="bg-black p-8 w-full h-full  flex flex-col "
+      className="bg-black p-8 w-full h-full  flex flex-col dashboard-sidebar"
       style={{
         backgroundColor: "black",
         position: "fixed",
         zIndex: 10,
-        width: "17%",
+   
       }}
     >
       <img

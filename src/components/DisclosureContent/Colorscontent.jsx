@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
-const Colorscontent = () => {
+const Colorscontent = ({card,setCard}) => {
+
+  console.log("card",card)
   const [colorScheme, setColorScheme] = useState({
-    bg: "#000000",
-    fg: "#FFFFFF",
+    bg: card?.bgColor || "#000000",
+    fg: card?.fontColor || "#ffffff",
   });
 
   const handleColorChange = (event) => {
@@ -19,7 +21,16 @@ const Colorscontent = () => {
             name="bg"
             type="color"
             className="w-10 h-10"
-            onChange={handleColorChange}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                bgColor:e.target.value
+              })
+              setColorScheme({
+                ...colorScheme,
+                bg:e.target.value
+              })
+            }}
             value={colorScheme.bg}
           />
           <span className="font-bold  mx-2">
@@ -35,7 +46,16 @@ const Colorscontent = () => {
             name="fg"
             type="color"
             className="w-10 h-10"
-            onInput={handleColorChange}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                fontColor:e.target.value
+              })
+              setColorScheme({
+                ...colorScheme,
+                fg:e.target.value
+              })
+            }}
             value={colorScheme.fg}
           />
           <span className="font-bold  mx-2">

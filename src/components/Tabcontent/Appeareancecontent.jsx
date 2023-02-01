@@ -4,14 +4,19 @@ import Disclosurebutton from "../Button/Disclosurebutton";
 import Colorscontent from "../DisclosureContent/Colorscontent";
 import Themescontent from "../DisclosureContent/Themescontent";
 
-const Appeareancecontent = () => {
+const Appeareancecontent = ({card,setCard}) => {
   return (
     <div className="w-full min-h-full  max-h-fit p-4 flex flex-col">
       <div className="my-4 w-full ">
         <Disclosurebutton
           text="Themes"
           isOpen={true}
-          component={<Themescontent />}
+          card={card}
+          setCard={setCard}
+          component={<Themescontent 
+            card={card}
+            setCard={setCard}
+          />}
         />
       </div>
 
@@ -19,7 +24,11 @@ const Appeareancecontent = () => {
         <Disclosurebutton
           text="Colors"
           isOpen={true}
-          component={<Colorscontent />}
+          component={<Colorscontent 
+          
+            card={card}
+            setCard={setCard}
+          />}
         />
       </div>
     </div>

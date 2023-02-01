@@ -5,7 +5,8 @@ import plus from "../../assets/icons/plus.svg";
 const Disclosurebutton = (props = { isOpen: true, component: <></> }) => {
   const [isOpen, setIsOpen] = useState(props.isOpen);
   const [buttonIcon, setButtonIcon] = useState(isOpen ? minus : plus);
-
+ let Component =props.component;
+    console.log("props.component",props);
   const handleToggle = () => {
     if (isOpen) {
       setIsOpen(false);
@@ -27,6 +28,7 @@ const Disclosurebutton = (props = { isOpen: true, component: <></> }) => {
           <img src={buttonIcon} alt="toggle" />
         </div>
       </button>
+     
 
       <div className={`${isOpen ? "block" : "hidden"}`}>{props.component}</div>
     </div>

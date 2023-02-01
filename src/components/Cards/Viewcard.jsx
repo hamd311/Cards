@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import qrCdoeImg from "../../assets/qrcode.svg"
+import imgbg from "../../assets/images/mobilePhone.png"
 const Viewcard = (props) => {
   const [id, setId] = useState();
 
@@ -42,14 +43,47 @@ const Viewcard = (props) => {
             style={" text-[25px] py-4 px-8 w-fit"}
           />
         </div>
-        <div className="flex w-full items-center ">
-          <img
-            src={require("../../assets/img2.png")}
+        <div className="flex w-full items-center 
+          justify-center
+        "
+       
+        >
+
+          <div 
+            style={{
+                backgroundImage:`url(${imgbg})`,
+                 height:"90vh",
+                 width:"90%",
+                 backgroundSize: "contain",
+                 backgroundRepeat:"no-repeat",
+                 marginLeft:"10px"
+            }}
+          >
+
+            <div
+                style={{
+                
+                  //  height:"70vh",
+                   borderRadius:"15px",
+                  //  width:"90%",
+                   color:props.card.fontColor,
+                   margin:"15px",
+                   backgroundColor:props.card.bgColor
+              }}
+            >
+        sdf
+            </div>
+
+         
+          </div>
+          {/* <img
+            
+            src={require("../../assets/images/mobilePhone.png")}
             alt="view card"
-            className={`lg:w-full  self-center ${
-              props.sideButtonHidden ? "w-full" : "w-1/2"
+            className={`lg:w-full px-5 self-center ${
+              props.sideButtonHidden ? "w-100" : "w-1/2"
             }`}
-          />
+          /> */}
 
           <div
             className={`sm:hidden block w-1/2 ${
