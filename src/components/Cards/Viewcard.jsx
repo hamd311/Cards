@@ -66,9 +66,9 @@ const Viewcard = (props) => {
                   //  height:"70vh",
                    borderRadius:"15px",
                   //  width:"90%",
-                   color:props.card.fontColor,
+                   color:props?.card?.fontColor,
                    margin:"15px",
-                   backgroundColor:props.card.bgColor
+                   backgroundColor:props?.card?.bgColor
               }}
             >
         sdf

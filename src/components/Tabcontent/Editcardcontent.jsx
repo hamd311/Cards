@@ -8,12 +8,24 @@ import eyeicon from "../../assets/icons/eye.svg";
 import { useState } from "react";
 
 const Editcardcontent = () => {
+
+
       
     const[card,setCard] = useState({
           theme:1,
           bgColor:"#000000",
-          fontColor:"#ffffff"
-        })
+          fontColor:"#ffffff",   
+          coverImage: "",
+          profileImage: "",
+          name: "",
+          tile: "",
+          busniessName: "",
+          phoneNumber: "",
+          email: "",
+          homePage: "",
+          
+        });
+        console.log(card)
     
   return (
     <div className="flex h-full w-full flex-col lg:flex-row">
@@ -37,7 +49,10 @@ const Editcardcontent = () => {
             card={card}
             setCard={setCard}
             />,
-            <Contactinfoconent />,
+            <Contactinfoconent 
+            card={card}
+            setCard={setCard}
+            />,
             <Contentcontent />,
           ]}
           activeStyle={"lg:text-[25px] text-[18px]"}

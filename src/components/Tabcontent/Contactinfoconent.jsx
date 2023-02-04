@@ -6,18 +6,11 @@ import Personalinfocontent from "../DisclosureContent/Personalinfocontent";
 import Socialcontent from "../DisclosureContent/Socialcontent";
 import Linkscontent from "../DisclosureContent/Linkscontent";
 
-const Contactinfoconent = () => {
+const Contactinfoconent = ({card,setCard}) => {
   const [openState, setOpenState] = useState([false, false, false]);
 
   const [personalContent, setPersonalContent] = useState({
-    coverImage: "",
-    profileImage: "",
-    name: "",
-    tile: "",
-    busniessName: "",
-    phoneNumber: "",
-    email: "",
-    homePage: "",
+ 
   });
 
   const handleFormChange = (event) => {
@@ -51,6 +44,9 @@ const Contactinfoconent = () => {
               personalContent={personalContent}
               setPersonalContent={setPersonalContent}
               handleFormChange={handleFormChange}
+
+              card={card}
+              setCard={setCard}
             />
           }
         />

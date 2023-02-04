@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import UploadImage from "../../controller/uploadImage/UploadImage";
 import FileInput from "../Input/FileInput";
 import Input from "../Input/Input";
 
 const Personalinfocontent = (props) => {
+
+    const {card,setCard}  = props;  
   return (
     <div className="w-full">
       <div className="lg:w-4/5 w-full p-4">
@@ -19,7 +22,19 @@ const Personalinfocontent = (props) => {
               >
                 Cover Image
               </p>
-              <FileInput />
+              <FileInput 
+                onChange = { async(file)=>{
+
+                  console.log("file",file)
+                let resp =   await UploadImage(file,"cover");
+                if(resp !== ""){
+                  setCard({
+                    ...card,
+                    coverImage:resp
+                  })
+                }
+                }}
+              />
             </div>
             <div className="mx-3">
               <p
@@ -29,7 +44,20 @@ const Personalinfocontent = (props) => {
               >
                 Logo/Profile
               </p>
-              <FileInput />
+              <FileInput 
+              
+              onChange = { async(file)=>{
+
+                console.log("file",file)
+              let resp =   await UploadImage(file,"logo");
+              if(resp !== ""){
+                setCard({
+                  ...card,
+                  profileImage:resp
+                })
+              }
+              }}
+              />
             </div>
           </div>
         </div>
