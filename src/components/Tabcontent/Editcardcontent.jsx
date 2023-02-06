@@ -8,9 +8,6 @@ import eyeicon from "../../assets/icons/eye.svg";
 import { useState } from "react";
 
 const Editcardcontent = () => {
-
-
-      
     const[card,setCard] = useState({
           theme:1,
           bgColor:"#000000",

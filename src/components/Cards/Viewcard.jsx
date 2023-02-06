@@ -62,16 +62,19 @@ const Viewcard = (props) => {
 
             <div
                 style={{
-                
-                  //  height:"70vh",
-                   borderRadius:"15px",
-                  //  width:"90%",
+                   borderRadius:"25px",
+                   marginRight: "31px",
+                   marginLeft: "7px",
                    color:props?.card?.fontColor,
-                   margin:"15px",
+                  overflow: 'hidden',
+
+                   marginTop: "7px",
+                  //  margin:"15px",
                    backgroundColor:props?.card?.bgColor
               }}
             >
-        sdf
+
+              <p>{props?.card?.busniessName}</p>
             </div>
 
          
