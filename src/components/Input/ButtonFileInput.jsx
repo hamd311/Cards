@@ -25,6 +25,7 @@ const ButtonFileInput = (props) => {
         id="multiple_files"
         type="file"
         multiple
+        onChange={props.onChange}
       />
     </div>
   );

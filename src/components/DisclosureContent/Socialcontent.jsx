@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactInfoElement from "../ContactInfo/ContactInfoElement";
 
 import "./Socialcontent.css";
@@ -48,29 +48,52 @@ const Socialcontent = (props) => {
   ];
   const [display, setDiaplay] = useState("z-[100]");
   const [showModal, setShowModal] = useState(false);
+  const {card,setCard} = props;
 
   const handelAddClick = () => {
     setShowModal(true);
   };
 
   const handelDelete = (index) => {
+    
     const oldeData = [...props.iconIndex];
     oldeData.splice(index, 1);
 
     props.setIconIndex([...oldeData]);
   };
+  useEffect(()=>{
+
+    if(props.iconIndex.length > 0){
+
+    
+
+  
+  }
+ 
+},[props.iconIndex])
 
   return (
     <>
       <div className="flex flex-col w-full">
         {props.iconIndex.map((item, index) => {
+           
+           console.log(item.index)
           return (
+       
             <ContactInfoElement
-              key={index}
-              Icon={icons[item].icon}
-              label={icons[item].name}
-              color={icons[index].color}
+              key={item.index}
+              Icon={icons[item.index].icon}
+              label={icons[item.index].name}
+              color={icons[item.index].color}
               handelDelete={handelDelete}
+              onChange = {(e)=>{
+                let temp = card.socialQuickAccess;
+                temp[index].link =e.target.value.trim();
+                setCard({
+                  ...card,
+                  socialQuickAccess:temp
+                })
+              }}
             />
           );
         })}
@@ -81,6 +104,9 @@ const Socialcontent = (props) => {
             iconIndex={props.iconIndex}
             setIconIndex={props.setIconIndex}
             setShowModal={setShowModal}
+            listingIcons= {icons}
+            card={card}
+            setCard={setCard}
           />
         )}
 

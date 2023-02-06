@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Inputgroup from "../Input/Inputgroup";
 import Textarea from "../Input/Textarea";
 
-const Aboutcontent = (props) => {
+const Aboutcontent = ({card,setCard}) => {
   const [formData, setFormData] = useState({
     tile: "",
     description: "",
@@ -49,19 +49,37 @@ const Aboutcontent = (props) => {
         <form onSubmit={handleSubmit}>
           <Inputgroup
             label={"Tile"}
-            value={formData.tile}
+            value={card?.article?.tile}
             placeholder={"About"}
-            onChange={handelChange}
+            onChange={(e)=>{
+          
+              setCard({
+                ...card,
+                  article:{
+                    ...card.article,
+                   title:e.target.value
+                  }
+              })
+            }}
             name={"tile"}
             id={"tile"}
             type={"text"}
           />
 
           <Textarea
-            value={formData.description}
+                value={card?.article?.content}
             id={"description"}
             name={"description"}
-            onChange={handelChange}
+            onChange={(e)=>{
+          
+              setCard({
+                ...card,
+                  article:{
+                    ...card.article,
+                    content:e.target.value
+                  }
+              })
+            }}
             formAttributes={{ weight, style, align }}
             formHandler={{ toggleBold, toggleAlign, toggleStyle }}
           />

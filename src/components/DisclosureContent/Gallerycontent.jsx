@@ -6,12 +6,21 @@ import Button from "../Button/Button";
 import ButtonFileInput from "../Input/ButtonFileInput";
 import Draggable from "react-draggable";
 
-const Gallerycontent = () => {
+const Gallerycontent = ({card,setCard}) => {
   return (
     <div className="w-full">
       <div className="w-4/5 mx-auto">
         <div className="w-4/5 mx-auto">
-          <Inputgroup label={"Galery Name"} value={"Our work"} />
+          <Inputgroup label={"Galery Name"} value={"Our work"} 
+            onChange={(e)=>{
+                let temp =card.gallary;
+                temp.name =e.target.value;
+                setCard({
+                  ...card,
+                  gallary:temp
+                })
+            }}
+          />
         </div>
 
         <div className="flex border links-container rounded-xl w-full my-2 mx-auto">
@@ -27,6 +36,14 @@ const Gallerycontent = () => {
                 value={"Video URL"}
                 id={"videoUrl"}
                 name={"videoUrl"}
+                onChange={(e)=>{
+                  let temp =card.gallary;
+                  temp.video =e.target.value;
+                  setCard({
+                    ...card,
+                    gallary:temp
+                  })
+              }}
               />
             </div>
           </div>

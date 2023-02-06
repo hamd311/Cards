@@ -1,6 +1,6 @@
 import React from "react";
 import binIcon from "../../assets/icons/bin.svg";
-const ContactInfoElement = ({ Icon, label, color, index, handelDelete }) => {
+const ContactInfoElement = ({ Icon, label, color, index, handelDelete,onChange}) => {
   return (
     <div className="flex lg:items-center lg:ml-10 mt-3">
       <div
@@ -21,6 +21,8 @@ const ContactInfoElement = ({ Icon, label, color, index, handelDelete }) => {
         id="inline-full-name"
         type="text"
         placeholder={label}
+
+        onChange={onChange}
       />
 
       <div className="w-[6%] flex sm:w-[10%] sm:block">

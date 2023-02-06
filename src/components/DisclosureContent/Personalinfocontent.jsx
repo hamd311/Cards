@@ -67,16 +67,26 @@ const Personalinfocontent = (props) => {
             placeholder="Hugo Galindo"
             name="name"
             id="name"
-            value={props.personalContent.name}
-            onChange={props.handleFormChange}
+            value={card?.name}
+            onChange={(e)=>{
+                setCard({
+                  ...card,
+                  name:e.target.value
+                })
+            }}
           />
           <p className="input-label mt-2">Tile/Position</p>
           <Input
             placeholder="Account Manager"
             name="tile"
             id="tile"
-            value={props.personalContent.tile}
-            onChange={props.handleFormChange}
+            value={card?.tile}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                tile:e.target.value
+              })
+          }}
           />
 
           <p className="input-label mt-2">Business Name</p>
@@ -84,24 +94,39 @@ const Personalinfocontent = (props) => {
             placeholder="Nunez Office Installations"
             name="busniessName"
             id="busniessName"
-            value={props.personalContent.busniessName}
-            onChange={props.handleFormChange}
+            value={card?.busniessName}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                busniessName:e.target.value
+              })
+          }}
           />
           <p className="input-label mt-2">Phone Number</p>
           <Input
             placeholder="7476090334"
             id="phoneNumber"
             name="phoneNumber"
-            value={props.personalContent.phoneNumber}
-            onChange={props.handleFormChange}
+            value={card?.phoneNumber}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                phoneNumber:e.target.value
+              })
+          }}
           />
           <p className="input-label mt-2">Email</p>
           <Input
             placeholder="Hugo@teamnoi.com"
             id="email"
             name="email"
-            value={props.personalContent.email}
-            onChange={props.handleFormChange}
+            value={card?.email}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                email:e.target.value
+              })
+          }}
           />
 
           <p className="input-label mt-2">Home Page</p>
@@ -109,8 +134,13 @@ const Personalinfocontent = (props) => {
             placeholder="www.Mydatacard.com/noi/c3"
             id="homePage"
             name="homePage"
-            value={props.personalContent.homePage}
-            onChange={props.handleFormChange}
+            value={card?.homePage}
+            onChange={(e)=>{
+              setCard({
+                ...card,
+                homePage:e.target.value
+              })
+          }}
           />
         </div>
       </div>

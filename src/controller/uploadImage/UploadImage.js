@@ -10,7 +10,7 @@ const UploadImage = (file,cover) => {
 uploadBytes(imageRef, file).then((snapshot) => {
    
     getDownloadURL(ref(snapshot.ref)).then((url)=>{
-        // console.log(url);
+        console.log(url);
         return url;
     }).catch(err=>{
         console.log(err);
