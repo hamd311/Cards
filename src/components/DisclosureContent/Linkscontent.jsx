@@ -4,22 +4,28 @@ import "./Socialcontent.css";
 import { ReactSortable } from "react-sortablejs";
 
 import defaultIcon from "../../assets/uploadfile.png";
+import UploadImage from "../../controller/uploadImage/UploadImage";
 const Linkscontent = (props) => {
   // Sortable list
-
-  const [links, setLinks] = useState([
-    { tile: "", url: "", icon: "" },
-    { tile: "", url: "", icon: "" },
-  ]);
-
+  const {card,setCard} = props;
   const populateList = () => {
     console.log("Setting the link to append");
-    props.setLinks([...props.links, { tile: "", url: "", icon: "" }]);
+     let temp = card.links;
+      temp.push({ tile: "", url: "", icon: "" });
+   setCard({...card,links:temp})
+props.setLinks([...props.links, { tile: "", url: "", icon: "" }]);
   };
 
   const handelInputChange = (index, event) => {
     let data = [...props.links];
+    let temp = [...card.links];
+
+    temp[index][event.target.name] = event.target.value;
     data[index][event.target.name] = event.target.value;
+    setCard({
+      ...card,
+      links:temp
+    })
     props.setLinks(data);
   };
 
@@ -43,6 +49,21 @@ const Linkscontent = (props) => {
                     <ButtonFileInput
                       text={"Thumbnail"}
                       css={`change-link-btn rounded-lg px-3  py-1 pb-1 mt-2 cursor-pointer ml-2`}
+
+                     onChange ={
+                      async (event)=>{
+                     let file = event.target.files[0];
+
+                     let resp = await  UploadImage(file,"thumbnil");
+                     let temp = [...card.links];
+                     temp[index].icon= resp;
+                     setCard({
+                      ...card,
+                      links:temp
+                     })
+              
+                      }
+                     }
                     />
                   </div>
                   <div className="flex flex-col w-[67%] p-4">

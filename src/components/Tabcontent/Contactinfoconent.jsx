@@ -5,6 +5,7 @@ import Disclosurebutton from "../Button/Disclosurebutton";
 import Personalinfocontent from "../DisclosureContent/Personalinfocontent";
 import Socialcontent from "../DisclosureContent/Socialcontent";
 import Linkscontent from "../DisclosureContent/Linkscontent";
+import { useEffect } from "react";
 
 const Contactinfoconent = ({card,setCard}) => {
   const [openState, setOpenState] = useState([false, false, false]);
@@ -27,6 +28,8 @@ const Contactinfoconent = ({card,setCard}) => {
 
   // Social contnent
   const [iconIndex, setIconIndex] = useState([]);
+
+
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -56,7 +59,10 @@ const Contactinfoconent = ({card,setCard}) => {
           text="Social Quick accces"
           isOpen={openState[1]}
           component={
-            <Socialcontent iconIndex={iconIndex} setIconIndex={setIconIndex} />
+            <Socialcontent iconIndex={iconIndex} setIconIndex={setIconIndex}
+            card={card}
+            setCard={setCard}
+            />
           }
         />
       </div>
@@ -65,7 +71,9 @@ const Contactinfoconent = ({card,setCard}) => {
         <Disclosurebutton
           text="Links "
           isOpen={openState[2]}
-          component={<Linkscontent links={links} setLinks={setLinks} />}
+          component={<Linkscontent links={links} setLinks={setLinks} 
+            card={card}  setCard ={setCard}
+          />}
         />
       </div>
 

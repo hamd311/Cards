@@ -8,16 +8,23 @@ import Draggable from "react-draggable";
 import { useState } from "react";
 import { ReactSortable } from "react-sortablejs";
 
-const Servicescontent = () => {
+const Servicescontent = ({card,setCard}) => {
   const [services, setServices] = useState([{ tile: "", details: "" }]);
 
   const populateList = () => {
+
+    let temp = [...card.services];
+    temp.push({ tile: "", details: "" });
+    setCard({
+      ...card,
+      services:temp
+    })
     setServices([...services, { tile: ``, details: `` }]);
   };
 
   const handelInputChange = (index, event) => {
     let data = [...services];
-    data[index][event.target.name] = event.target.value;
+   data[index][event.target.name] = event.target.value;
     setServices(data);
   };
 
@@ -43,14 +50,30 @@ const Servicescontent = () => {
                       value={service.tile}
                       name={"tile"}
                       id={"tile"}
-                      onChange={(event) => handelInputChange(index, event)}
+                      onChange={(event)=>{
+                        handelInputChange(index, event);
+                        let temp  = [...card.services];
+                        temp[index].tile = event.target.value;
+                        setCard({
+                          ...card,
+                          services:temp
+                        })
+                      }}
                     />
                     <Simpletextarea
                       placeholder={"Details"}
                       name={"details"}
                       id={"details"}
                       value={service.details}
-                      onChange={(event) => handelInputChange(index, event)}
+                      onChange={(event) => {
+                        let temp  = [...card.services];
+                        temp[index].details = event.target.value;
+                        setCard({
+                          ...card,
+                          services:temp
+                        })
+                        handelInputChange(index, event)
+                      }}
                     />
                   </div>
                 </div>

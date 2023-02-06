@@ -22,7 +22,7 @@ import Snapchat from "../../assets/icons/Snapchat.svg";
 import Skype from "../../assets/icons/Skype.svg";
 import "./Iconboard.css";
 const Iconboard = (props) => {
-  const { setShowModal } = props;
+  const { setShowModal,listingIcons,setCard,card} = props;
   const icons = [
     { icon: emailIcon1, name: "Email", color: "#2566B3" },
     { icon: facebookIcon, name: "Facebook", color: "#2566B3" },
@@ -48,7 +48,34 @@ const Iconboard = (props) => {
 
   const handleClick = (id) => {
     setShowModal(false);
-    props.setIconIndex((iconIndex) => [...props.iconIndex, id]);
+    let temp =   props.iconIndex;
+
+    console.log("temp",temp)
+     temp.push(
+      {
+        index:id
+      }
+     );
+     props.setIconIndex([
+      ...temp
+     ])
+
+   
+    
+     temp.push({
+         icon:icons[props.iconIndex],
+         link:""
+     })
+
+     let tempArr = listingIcons[id];
+     console.log("tempArr",tempArr)
+ 
+     setCard({
+       ...card,
+       socialQuickAccess:temp
+     })
+    // props.setIconIndex((iconIndex) => [{...props.iconIndex, 
+    //    index:id}]);
   };
   return (
     <div

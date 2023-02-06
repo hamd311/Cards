@@ -23,6 +23,18 @@ const Editcardcontent = () => {
           phoneNumber: "",
           email: "",
           homePage: "",
+          socialQuickAccess:[],
+          links:[{ tile: "", url: "", icon: "" }],
+          article:{
+            title:"",
+            content:""
+          },
+          services:[{ tile: "", details: "" }],
+          gallary:{
+            name:"",
+            video:"",
+            images:[],
+          }
           
         });
         console.log(card)
@@ -53,7 +65,10 @@ const Editcardcontent = () => {
             card={card}
             setCard={setCard}
             />,
-            <Contentcontent />,
+            <Contentcontent 
+            card={card}
+            setCard={setCard}
+            />,
           ]}
           activeStyle={"lg:text-[25px] text-[18px]"}
           inactiveStyle={"lg:text-[22px] text-[16px]"}

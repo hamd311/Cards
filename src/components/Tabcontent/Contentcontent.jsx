@@ -6,18 +6,28 @@ import Leadgenerationcontent from "../DisclosureContent/Leadgenerationcontent";
 import Reviewcontent from "../DisclosureContent/Reviewcontent";
 import Servicescontent from "../DisclosureContent/Servicescontent";
 
-const Contentcontent = () => {
+const Contentcontent = ({card,setCard}) => {
   return (
     <div className="p-4 h-fit">
       <div className="my-4">
-        <Disclosurebutton text="About " component={<Aboutcontent />} />
+        <Disclosurebutton text="About " component={<Aboutcontent 
+            card={card}
+            setCard={setCard}
+        />} />
       </div>
       <div className="my-4">
-        <Disclosurebutton text="Services " component={<Servicescontent />} />
+        <Disclosurebutton text="Services " component={<Servicescontent 
+        
+        card={card}
+        setCard={setCard}
+        />} />
       </div>
 
       <div className="my-4">
-        <Disclosurebutton text="Gallery " component={<Gallerycontent />} />
+        <Disclosurebutton text="Gallery " component={<Gallerycontent 
+            card={card}
+            setCard={setCard}
+        />} />
       </div>
       <div className="my-4">
         <Disclosurebutton text="Reviews " component={<Reviewcontent />} />
