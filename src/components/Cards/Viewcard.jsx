@@ -73,6 +73,14 @@ const Viewcard = (props) => {
                    backgroundColor:props?.card?.bgColor
               }}
             >
+             <img src={props.card?.coverImage}   />
+
+             <div className="">
+                 {props.card?.name}
+             </div>
+             <div>
+                 {props.card?.tile}
+             </div>
 
               <p>{props?.card?.busniessName}</p>
             </div>

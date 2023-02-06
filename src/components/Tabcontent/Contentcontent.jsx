@@ -30,12 +30,19 @@ const Contentcontent = ({card,setCard}) => {
         />} />
       </div>
       <div className="my-4">
-        <Disclosurebutton text="Reviews " component={<Reviewcontent />} />
+        <Disclosurebutton text="Reviews " component={<Reviewcontent 
+        
+        card={card}
+        setCard={setCard}
+        />} />
       </div>
       <div className="my-4">
         <Disclosurebutton
           text="Lead Generation System "
-          component={<Leadgenerationcontent />}
+          component={<Leadgenerationcontent 
+            card={card}
+            setCard={setCard}
+          />}
         />
       </div>
     </div>

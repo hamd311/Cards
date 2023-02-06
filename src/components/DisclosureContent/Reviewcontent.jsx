@@ -3,7 +3,7 @@ import Button from "../Button/Button";
 import Inputgroup from "../Input/Inputgroup";
 import LabledForm from "../Input/LabledForm";
 
-const Reviewcontent = () => {
+const Reviewcontent = ({card,setCard}) => {
   const [formData, setFormData] = useState({
     name: "ScottWearing, Director of Operations, BKM OfFice ",
     review: "",
@@ -27,18 +27,35 @@ const Reviewcontent = () => {
         <form className="w-full" onSubmit={handleSubmit}>
           <Inputgroup
             label={"Name"}
-            value={formData.name}
-            onChange={handelChange}
+            value={card?.reviews?.name}
+            onChange={(e)=>{
+
+              let temp = card.reviews;
+              temp.name = e.target.value;
+              setCard({
+                ...card,
+                reviews:temp,
+              })
+            }}
             name={"name"}
             id={"name"}
           />
           <div className="my-2">
             <LabledForm
               label={"Review"}
-              value={formData.review}
+             
               name={"review"}
               id={"review"}
-              onChange={handelChange}
+              value={card?.reviews?.review}
+              onChange={(e)=>{
+  
+                let temp = card.reviews;
+                temp.review = e.target.value;
+                setCard({
+                  ...card,
+                  reviews:temp,
+                })
+              }}
             />
           </div>
 

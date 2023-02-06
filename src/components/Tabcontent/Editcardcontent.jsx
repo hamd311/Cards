@@ -31,7 +31,17 @@ const Editcardcontent = () => {
             name:"",
             video:"",
             images:[],
-          }
+          },
+         reviews:{
+          name:"ScottWearing, Director of Operations, BKM OfFice",
+          review:""
+         },
+         leadGeneration:{
+            isTrue:true,
+            leadGeneration:"ksdjfajsd"
+         },
+
+          
           
         });
         console.log(card)
