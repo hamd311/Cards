@@ -1,10 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Viewcard from "../Cards/Viewcard";
 import stats from "../../assets/icons/stats.svg";
 import graph from "../../assets/icons/graph.svg";
 import Chart from "../Chart/Chart";
+import { getAnalytics, getAnalyticsDate } from "../../controller/Analytics";
+import { format } from 'date-fns'
 
-const Dashboardcontent = () => {
+const Dashboardcontent = (id) => {
+  console.log("id is: ", id);
+  const cardId =id.cardId;
+  const [totalVisits, setTotalVists] = useState(0); 
+  const [totalClicks, setTotalClicks] = useState(0); 
+  const [selectedVisits, setSelecetedVists] = useState(0); 
+  const [selectedClicks, setSelectedClicks] = useState(0); 
+  const [date, setDate] = useState(0); 
+
+  const getAllData = async () =>{
+    let temp = [];
+    temp = await getAnalytics(cardId);
+    console.log("temp.length", temp.length);
+    let tempVisits = 0;
+    let tempClicks = 0;
+    
+    for(let i = 0; i < temp.length;i++){
+      if(temp[i].cardVisit === true){
+        tempVisits++;
+      }else{
+        tempClicks++;
+      }
+    }
+    setTotalVists(tempVisits);
+    setTotalClicks  (tempClicks);
+
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, [cardId]);
+  const getDateAllData = async () =>{
+    let temp = [];
+    temp = await getAnalyticsDate(cardId,date);
+    let tempVisits = 0;
+    let tempClicks = 0;
+    
+    for(let i = 0; i < temp.length;i++){
+      if(temp[i].cardVisit === true){
+        tempVisits++;
+      }else{
+        tempClicks++;
+      }
+    }
+    setSelecetedVists(tempVisits);
+    setSelectedClicks(tempClicks);
+  };
+
+  useEffect(() => {
+    getDateAllData();
+  }, [date]);
   return (
     <div className="lg:flex justify-center w-full h-full px-4 ">
       <div className="lg:w-2/6  w-full py-6 lg:border-r xl:border-r border-black lg:h-full">
@@ -22,7 +74,7 @@ const Dashboardcontent = () => {
               <span> Visitors</span>
             </div>
             <div className="flex items-center justify-around ">
-              <span> 255 </span>
+              <span> {totalVisits} </span>
               <span className="">
                 <img src={stats} alt="statistic" className="w-10" />
               </span>
@@ -34,7 +86,7 @@ const Dashboardcontent = () => {
               <span> Clicks</span>
             </div>
             <div className="flex items-center justify-around ">
-              <span> 195 </span>
+              <span> {totalClicks} </span>
               <span className="">
                 <img src={graph} alt="graph" className="w-10" />
               </span>
@@ -47,6 +99,14 @@ const Dashboardcontent = () => {
           <input
             type="date"
             className="w-full rounded p-2 border-2 border-gray-300 bg-inherit"
+            onChange={(e) => {
+              console.log("date date", e.target.value);
+              const datea = new Date(e.target.value)
+              const date1 = format(datea, 'dd/MM/yyyy');
+              setDate(date1);
+              console.log("date date",date1);
+
+            }}
           />
         </div>
 
@@ -57,16 +117,16 @@ const Dashboardcontent = () => {
             <div>
               <div className="flex items-center justify-center">
                 <span className="w-4 h-4 rounded-full bg-green-400 mx-2"></span>
-                <span> Clicks</span>
+                <span> Visits</span>
               </div>
-              <div className="text-center text-xl">2</div>
+              <div className="text-center text-xl">{selectedVisits}</div>
             </div>
             <div>
               <div className="flex items-center justify-center">
                 <span className="w-4 h-4 rounded-full bg-blue-400 mx-2"></span>
                 <span> Clicks</span>
               </div>
-              <div className="text-center text-xl">2</div>
+              <div className="text-center text-xl">{selectedClicks}</div>
             </div>
           </div>
 
@@ -80,7 +140,7 @@ const Dashboardcontent = () => {
         <div className="flex my-5 items-center  justify-around lg:block hidden">
           <div>
             <div className="text-2xl"> Link to your DATA card</div>
-            <div>https://www.my-datacard.com/noi/c3</div>
+            <div>https://www.my-datacard.co/dashboard?id={cardId}</div>
           </div>
 
           <img src="./images/qrcode.png" alt="QR Code" className="w-[10%]" />

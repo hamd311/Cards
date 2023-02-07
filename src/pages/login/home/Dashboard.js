@@ -9,13 +9,13 @@ import DashboardSideBar from "../../../components/sidebar/DashboardSideBar";
 
 const Dashboard = () => {
   const [headerText, setHeaderText] = useState("Hugo c1");
-
+const [id,setId] = useState("");
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
     const id = Number(query.get("id"));
-
-    setHeaderText(`${cardData[id].firstName} ${cardData[id].cardNumber}`);
+    setId(query.get("id"));
+    setHeaderText("");
   }, []);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +45,7 @@ const Dashboard = () => {
    
       >
         <div className="w-full ">
-          <Header heading={`Cards/${headerText}`} openMenu={openMenu} />
+          <Header heading={`Cards/${id.slice(0,5)}...`} openMenu={openMenu} />
         </div>
         <div className="w-full h-full overflow-y-auto" onClick={closeMenu}
            
@@ -53,7 +53,9 @@ const Dashboard = () => {
           <Tab
             tabs={["Dashboard", "Members"]}
             tabcontent={[
-              <Dashboardcontent />,
+              <Dashboardcontent 
+              cardId = {id}
+              />,
               // <Editcardcontent />,
               <Membercontent />,
             ]}

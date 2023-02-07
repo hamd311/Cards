@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import qrCdoeImg from "../../assets/qrcode.svg";
 import imgbg from "../../assets/images/mobilePhone.png";
+import { format } from "date-fns";
+import { addAnalytics } from "../../controller/Analytics";
 const Viewcard = (props) => {
   const [id, setId] = useState();
 
@@ -13,7 +15,7 @@ const Viewcard = (props) => {
 
     const id = Number(query.get("id"));
 
-    setId(id);
+    setId(query.get("id"));
 
     // setHeaderText(`${cardData[id].firstName} ${cardData[id].cardNumber}`);
   }, []);
@@ -25,7 +27,18 @@ const Viewcard = (props) => {
   };
 
   const gotoView = () => {
+    const date = format(new Date(), 'dd/MM/yyyy');
+    
+    const cardData = {
+      cardId: id,
+      cardVisit: false,
+      date: date,
+    };
+
+    addAnalytics(cardData);
     navigate(`/view?id=${id}`);
+
+  
   };
 
   console.log("Links", props?.links);

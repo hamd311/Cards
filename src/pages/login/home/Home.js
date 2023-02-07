@@ -1,24 +1,62 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../../components/Header/Header";
 import Mainsidebar from "../../../components/sidebar/Mainsidebar";
+import { format } from 'date-fns'
 
 import addCard from "../../../assets/images/addcard.svg";
 import Card from "../../../components/Cards/Card";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import Logout from "../../../components/logout/Logout";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { addAnalytics } from "../../../controller/Analytics";
 const images = [
   "./images/card-1.png",
   "./images/card-2.png",
   "./images/card-3.png",
 ];
 
+
+
+
+
 export const Home = () => {
+  const [cardsData, setCardsData] = useState([]);
+  const [searchCards, setSearchCards] = useState("");
+
+  const getAllCards = async () => {
+    const cardsCollection = collection(db, "cards");
+    const data = await getDocs(cardsCollection);
+    console.log(data);
+
+    let documents = [];
+    data.docs.forEach((doc) => {
+      documents.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(documents);
+    setCardsData(documents);
+  };
+  useEffect(() => {
+
+    getAllCards();
+  }, [
+
+  ]);
 
       console.log(auth.currentUser);
   const navigate = useNavigate();
-  const navigateToDashboard = (id) => {
-    navigate(`/dashboard?id=${id}`);
+  const navigateToDashboard = (id, cardId, cardVisit) => {
+    navigate(`/dashboard?id=${cardId}`);
+    const date = format(new Date(), 'dd/MM/yyyy');
+    
+    const cardData = {
+      cardId: cardId,
+      cardVisit: cardVisit,
+      date: date,
+    };
+
+    addAnalytics(cardData);
+
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,6 +97,10 @@ export const Home = () => {
                 <input
                   type={"text"}
                   placeholder={"Search Card"}
+
+                  onChange = {(e) => {
+                    setSearchCards(e.target.value);
+                  }}
                   className="sm:w-4/5 w-full   border  border-[#494949] rounded-md p-2 placeholder:text-[#646464] placeholder:italic outline-none "
                 />
               </div>
@@ -68,12 +110,20 @@ export const Home = () => {
                   <img src={addCard} alt="Add card " />
                 </div>
   
-                {images.map((image, i) => {
+                {cardsData  .filter((el) => {
+                  if (searchCards === "") {
+                    return el;
+                  } else {
+                    return el.name.toLowerCase().includes(searchCards);
+                  }
+                }).map((item, i) => {
                   return (
                     <Card
                       key={i}
-                      image={image}
-                      onClick={() => navigateToDashboard(i)}
+                      image={item.Image}
+                      id={"C_" + (i + 1) + "    "}
+                      name={item.name}
+                      onClick={() => navigateToDashboard(i,item.id, true )}
                     />
                   );
                 })}

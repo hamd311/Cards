@@ -1,0 +1,32 @@
+.card-class{
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+}
+
+.card-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.card-img {
+    border-radius: 50%;
+    height: 135px;
+    width: 135px;
+    padding-left: 16px;
+  }
+
+.card_id{
+text-align: right;
+font-size: 17px;
+font-family: fangsong;
+font-weight: 500;
+}
+
+.card_name{
+text-align: center;
+font-size: 24px;
+font-family: fangsong;
+font-weight: 500;
+}
