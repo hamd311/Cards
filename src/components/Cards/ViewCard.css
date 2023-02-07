@@ -1,0 +1,64 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-container .name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.info-container .position {
+  font-size: 14px;
+  font-weight: 400;
+}
+.info-container .business-name {
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.social-profiles-container {
+  /* display: flex;
+  align-items: center; */
+  margin: 14px 0px 0px 0px;
+}
+.social-profiles-container .icon-name-container {
+  display: flex;
+  align-items: center;
+}
+.social-profiles-container .row-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0px 8px 0px;
+}
+.social-profiles-container .row-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0px 8px 0px;
+}
+.social-profiles-container .row-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0px 8px 0px;
+}
+.social-profiles-container .row-4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 8px 0px 8px 0px;
+}
+
+.social-profiles-container .row-1 .icon-name-container .name {
+  margin: 0px 0px 0px 8px;
+}
+.social-profiles-container .row-2 .icon-name-container .name {
+  margin: 0px 0px 0px 8px;
+}
+.social-profiles-container .row-3 .icon-name-container .name {
+  margin: 0px 0px 0px 8px;
+}
+.social-profiles-container .row-4 .icon-name-container .name {
+  margin: 0px 0px 0px 8px;
+}
