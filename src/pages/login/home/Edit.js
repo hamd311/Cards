@@ -11,6 +11,8 @@ const Edit = (props) => {
     const query = new URLSearchParams(window.location.search);
 
     const id = query.get("id");
+
+    console.log("id is: ", id);
     setDocId(id);
     setHeaderText(id);
   }, []);
@@ -39,7 +41,7 @@ const Edit = (props) => {
         </div>
         <div className="w-full h-full overflow-y-auto" onClick={closeMenu}>
           <Editcardcontent 
-          id = {docId}
+          id = {{docId}}
           />
         </div>
       </div>

@@ -114,7 +114,7 @@ export const Home = () => {
                   return (
                     <Card
                       key={i}
-                      image={item.profileImage}
+                      image={item.profileImage === "" ? item.coverImage : item.profileImage }
                       id={"C_" + (i + 1) + "    "}
                       name={item.name}
                       onClick={() => navigateToDashboard(i,item.id, true )}

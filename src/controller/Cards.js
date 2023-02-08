@@ -2,7 +2,7 @@ import { addDoc, collection, doc, getDoc, getDocs, setDoc } from "firebase/fires
 import { db } from "../firebase";
 
 export const addCardsData = async (data,id) => {
-    const cardsCollection = doc(db, "cards",id.id.toString());
+    const cardsCollection = doc(db, "cards",id);
     const result = await setDoc(cardsCollection,data);
     console.log("addCardsData", id);
   }
@@ -22,6 +22,8 @@ export const addCardsData = async (data,id) => {
 
   
  export const getSingleCard = async (id) => {
+  console.log("No such document!", id);
+
   const docRef = doc(db, "cards", id.id.toString());
 const docSnap = await getDoc(docRef);
 

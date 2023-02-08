@@ -38,8 +38,9 @@ const Contactinfoconent = ({card,setCard,id}) => {
     event.preventDefault();
     console.log("Card: ", card, " id: ", id.id);
     console.log(iconIndex);
-    await addCardsData(card,id);
-    navigate("/");
+    await addCardsData(card,id.id.toString());
+    window.location.href = "/";
+
   };
 
   return (
