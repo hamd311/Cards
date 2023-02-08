@@ -6,13 +6,13 @@ import cardData from "../../../Data/cardData.json";
 
 const Edit = (props) => {
   const [headerText, setHeaderText] = useState("Hugo c1");
-
-  useEffect(() => {
+  const [docId, setDocId] = useState("");
+   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
-    const id = Number(query.get("id"));
-
-    setHeaderText(`${cardData[id].firstName} ${cardData[id].cardNumber}`);
+    const id = query.get("id");
+    setDocId(id);
+    setHeaderText(id);
   }, []);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +38,9 @@ const Edit = (props) => {
           <Header heading={`Cards/${headerText}`} openMenu={openMenu} />
         </div>
         <div className="w-full h-full overflow-y-auto" onClick={closeMenu}>
-          <Editcardcontent />
+          <Editcardcontent 
+          id = {docId}
+          />
         </div>
       </div>
     </div>

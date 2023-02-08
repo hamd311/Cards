@@ -7,48 +7,92 @@ import Contentcontent from "./Contentcontent";
 import eyeicon from "../../assets/icons/eye.svg";
 import { useState } from "react";
 import { useEffect } from "react";
+import { getSingleCard } from "../../controller/Cards";
 
-const Editcardcontent = () => {
-
-   
+const Editcardcontent = (id) => {
     const[card,setCard] = useState({
-          theme:1,
-          bgColor:"#000000",
-          fontColor:"#ffffff",   
-          coverImage: "",
-          profileImage: "",
-          name: "",
-          tile: "",
-          busniessName: "",
-          phoneNumber: "",
-          email: "",
-          homePage: "",
-          socialQuickAccess:[],
-          links:[{ tile: "Visit our website", url: "www.teamoni.com", icon: "" }],
-          article:{
-            title:"",
-            content:""
-          },
-          services:[{ tile: "Ours services", details: "-installatiion " }],
-          gallary:{
-            name:"Our Work",
-            video:"https://www.youtube.com/watch?v=-mJFZp",
-            images:[],
-          },
-         reviews:{
-          name:"ScottWearing, Director of Operations, BKM OfFice",
-          review:""
-         },
-         leadGeneration:{
-            isTrue:true,
-            leadGeneration:"ksdjfajsd"
-         },
-
-          
-          
-        });
-        console.log(card)
+      theme:1,
+      bgColor:"#000000",
+      fontColor:"#ffffff",   
+      coverImage: "",
+      profileImage: "",
+      name: "",
+      tile: "",
+      busniessName: "",
+      phoneNumber: "",
+      email: "",
+      homePage: "",
+      socialQuickAccess:[],
+      links:[{ tile: "Visit our website", url: "www.teamoni.com", icon: "" }],
+      article:{
+        title:"",
+        content:""
+      },
+      services:[{ tile: "Ours services", details: "-installatiion " }],
+      gallary:{
+        name:"Our Work",
+        video:"https://www.youtube.com/watch?v=-mJFZp",
+        images:[],
+      },
+     reviews:{
+      name:"ScottWearing, Director of Operations, BKM OfFice",
+      review:""
+     },
+     leadGeneration:{
+        isTrue:true,
+        leadGeneration:"ksdjfajsd"
+     },
     
+      
+      
+    });
+        console.log(card)
+    useEffect(async () => {
+const result = await getSingleCard(id);
+if(result === ""){
+setCard(
+  
+  {
+  theme:1,
+  bgColor:"#000000",
+  fontColor:"#ffffff",   
+  coverImage: "",
+  profileImage: "",
+  name: "",
+  tile: "",
+  busniessName: "",
+  phoneNumber: "",
+  email: "",
+  homePage: "",
+  socialQuickAccess:[],
+  links:[{ tile: "Visit our website", url: "www.teamoni.com", icon: "" }],
+  article:{
+    title:"",
+    content:""
+  },
+  services:[{ tile: "Ours services", details: "-installatiion " }],
+  gallary:{
+    name:"Our Work",
+    video:"https://www.youtube.com/watch?v=-mJFZp",
+    images:[],
+  },
+ reviews:{
+  name:"ScottWearing, Director of Operations, BKM OfFice",
+  review:""
+ },
+ leadGeneration:{
+    isTrue:true,
+    leadGeneration:"ksdjfajsd"
+ },
+
+  
+  
+});
+}else{
+  setCard(result);
+}
+
+    } , [])
   return (
     <div className="flex h-full w-full flex-col lg:flex-row">
       <button
@@ -74,6 +118,7 @@ const Editcardcontent = () => {
             <Contactinfoconent 
             card={card}
             setCard={setCard}
+            id ={id}
             />,
             <Contentcontent 
             card={card}

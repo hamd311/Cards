@@ -10,6 +10,7 @@ import { auth, db } from "../../../firebase";
 import Logout from "../../../components/logout/Logout";
 import { collection, getDocs } from "firebase/firestore/lite";
 import { addAnalytics } from "../../../controller/Analytics";
+import { getAllCards } from "../../../controller/Cards";
 const images = [
   "./images/card-1.png",
   "./images/card-2.png",
@@ -24,21 +25,14 @@ export const Home = () => {
   const [cardsData, setCardsData] = useState([]);
   const [searchCards, setSearchCards] = useState("");
 
-  const getAllCards = async () => {
-    const cardsCollection = collection(db, "cards");
-    const data = await getDocs(cardsCollection);
-    console.log(data);
 
-    let documents = [];
-    data.docs.forEach((doc) => {
-      documents.push({ ...doc.data(), id: doc.id });
-    });
-    console.log(documents);
-    setCardsData(documents);
-  };
-  useEffect(() => {
+  useEffect( () => {
+   const fetchData = async () => {
+      const documents =await getAllCards();
+      setCardsData(documents);
+    }
+    fetchData();
 
-    getAllCards();
   }, [
 
   ]);
@@ -120,7 +114,7 @@ export const Home = () => {
                   return (
                     <Card
                       key={i}
-                      image={item.Image}
+                      image={item.profileImage}
                       id={"C_" + (i + 1) + "    "}
                       name={item.name}
                       onClick={() => navigateToDashboard(i,item.id, true )}

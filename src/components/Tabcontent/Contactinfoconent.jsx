@@ -6,8 +6,10 @@ import Personalinfocontent from "../DisclosureContent/Personalinfocontent";
 import Socialcontent from "../DisclosureContent/Socialcontent";
 import Linkscontent from "../DisclosureContent/Linkscontent";
 import { useEffect } from "react";
+import { addCardsData } from "../../controller/Cards";
+import { useNavigate } from "react-router";
 
-const Contactinfoconent = ({card,setCard}) => {
+const Contactinfoconent = ({card,setCard,id}) => {
   const [openState, setOpenState] = useState([false, false, false]);
 
   const [personalContent, setPersonalContent] = useState({
@@ -29,11 +31,15 @@ const Contactinfoconent = ({card,setCard}) => {
   // Social contnent
   const [iconIndex, setIconIndex] = useState([]);
 
+  const navigate = useNavigate();
 
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
+    console.log("Card: ", card, " id: ", id.id);
     console.log(iconIndex);
+    await addCardsData(card,id);
+    navigate("/");
   };
 
   return (
