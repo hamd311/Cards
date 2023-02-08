@@ -349,7 +349,21 @@ const Viewcard = (props) => {
                     <div className="reviews-container">
                          <h2>Reviews</h2>
                          <p>{props?.card?.reviews?.review}</p>
+                         <p className="review-name">{props?.card?.reviews?.name}</p>
                     </div>
+                  }
+
+                  {
+
+props?.card?.leadGeneration?.isTrue &&(
+  <p className="lead-gen-title">{
+    props?.card?.leadGeneration?.leadGeneration
+  }</p>
+
+)
+   
+
+                 
                   }
               
               </div>

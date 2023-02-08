@@ -141,6 +141,20 @@ flex-direction: column;
 .reviews-container p{
   word-wrap: break-word;
 }
+.reviews-container .review-name{
+    margin-top: 10px;
+    word-wrap: break-word;
+    white-space: initial;
+    font-size: 12px;
+    margin: 3px 4px 3px 5px;
+    text-align: center;
+
+}
 .reviews-container  h2{
   border-bottom: 2px solid white;
+}
+.lead-gen-title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
 }

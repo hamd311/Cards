@@ -24,12 +24,12 @@ const Editcardcontent = () => {
           email: "",
           homePage: "",
           socialQuickAccess:[],
-          links:[{ tile: "", url: "", icon: "" }],
+          links:[{ tile: "Visit our website", url: "www.teamoni.com", icon: "" }],
           article:{
             title:"",
             content:""
           },
-          services:[{ tile: "", details: "" }],
+          services:[{ tile: "Ours services", details: "-installatiion " }],
           gallary:{
             name:"Our Work",
             video:"https://www.youtube.com/watch?v=-mJFZp",
