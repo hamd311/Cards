@@ -6,8 +6,11 @@ import Contactinfoconent from "./Contactinfoconent";
 import Contentcontent from "./Contentcontent";
 import eyeicon from "../../assets/icons/eye.svg";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Editcardcontent = () => {
+
+   
     const[card,setCard] = useState({
           theme:1,
           bgColor:"#000000",
@@ -28,8 +31,8 @@ const Editcardcontent = () => {
           },
           services:[{ tile: "", details: "" }],
           gallary:{
-            name:"",
-            video:"",
+            name:"Our Work",
+            video:"https://www.youtube.com/watch?v=-mJFZp",
             images:[],
           },
          reviews:{

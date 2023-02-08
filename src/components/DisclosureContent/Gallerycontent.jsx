@@ -12,7 +12,7 @@ const Gallerycontent = ({card,setCard}) => {
     <div className="w-full">
       <div className="w-4/5 mx-auto">
         <div className="w-4/5 mx-auto">
-          <Inputgroup label={"Galery Name"} value={"Our work"} 
+          <Inputgroup label={"Galery Name"} value={card?.gallary?.name} 
             onChange={(e)=>{
                 let temp =card.gallary;
                 temp.name =e.target.value;

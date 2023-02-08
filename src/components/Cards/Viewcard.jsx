@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import { addAnalytics } from "../../controller/Analytics";
 const Viewcard = (props) => {
   const [id, setId] = useState();
-
+  console.log("props",props.card)
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
@@ -70,26 +70,33 @@ const Viewcard = (props) => {
               backgroundRepeat: "no-repeat",
               marginLeft: "10px",
             }}
+            className="show-card-container"
           >
             <div
               style={{
-                borderRadius: "38px",
-                marginRight: "15px",
-                marginLeft: "8px",
+               
                 color: props?.card?.fontColor,
-                overflow: "hidden",
-                marginTop: "10px",
+              
                 //  margin:"15px",
                 backgroundColor: props?.card?.bgColor,
+              
+                
               }}
+              className="show-card-bg"
             >
-              <img src={props.card?.coverImage} />
+             <img src={props.card?.coverImage}   
+               className="mt-10
+                 mx-auto
+               "/>
+             {/* <img src={props.card?.profileImage}   
+               className="mt-10"/> */}
 
               <div className="info-container">
                 <div className="name">{props.card?.name}</div>
                 <div className="position">{props.card?.tile}</div>
                 <div className="business-name">{props?.card?.busniessName}</div>
               </div>
+            
 
               <div className="social-profiles-container">
                 <div className="row-1">
@@ -271,6 +278,80 @@ const Viewcard = (props) => {
                     <span className="name">Phone</span>
                   </div>
                 </div>
+                
+                <div className="vist-website-container">
+
+                      {
+                    props.card?.links.map((item)=>{
+                      const{tile,url}  =item;
+                      return(
+                        <a href={url}>{tile}</a> 
+                      )
+                    })
+                }
+                 
+
+                    <h2>{
+                        props.card?.article?.title
+                      }</h2>
+
+                   
+
+                  </div>
+                  <div className="artilce-container">
+                  <p>
+                      {
+                        props.card?.article?.content
+                      }
+                      </p>
+
+                  </div>
+
+                  <div className="services-container">
+                      {
+
+  props.card?.services && props.card?.services?.map((item)=>{
+                            return <div className="single-service">
+                              <div className="head">
+                                <h2>{item.tile}</h2>
+                                <span>+</span>
+                              </div>
+                              <div className="body">
+                    
+                        <p>{item?.details}</p>
+                      
+
+                              </div>
+                            </div>
+                          })
+                      }
+                      
+
+                  </div>
+                  <div className="work-secton">
+                    {
+                      props.card?.gallary?.name &&
+                      <h2>{ props.card?.gallary?.name}</h2>
+                    }
+                    {
+                      props.card?.gallary?.video &&
+                    <video  controls>
+                      <source src={props.card?.gallary?.video} type="video/mp4" />
+                     
+                      Your browser does not support the video tag.
+                    </video>
+                    }
+
+                   
+                  </div>
+                  {
+                    props?.card?.reviews &&
+                    <div className="reviews-container">
+                         <h2>Reviews</h2>
+                         <p>{props?.card?.reviews?.review}</p>
+                    </div>
+                  }
+              
               </div>
 
               {/* <div className="">{props.card?.name}</div> */}

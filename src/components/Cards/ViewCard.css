@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .info-container .name {
   font-size: 18px;
@@ -61,4 +63,84 @@
 }
 .social-profiles-container .row-4 .icon-name-container .name {
   margin: 0px 0px 0px 8px;
+}
+.vist-website-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.vist-website-container a{
+   border: 1px solid white;
+   padding: 5px;
+   border-radius: 5px;
+}
+
+.vist-website-container h2{
+  border-bottom: 3px solid white;
+
+}
+
+.artilce-container{
+  margin: auto;
+  padding:0px 20px 0px 20px;
+}
+.social-profiles-container .services-container{
+   display: flex;
+   flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+}
+.services-container .single-service{
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%;
+}
+.services-container .single-service .head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.work-secton{
+  display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+flex-direction: column;
+}
+.work-secton video{
+  width: 90%;
+  margin-top: 10px;
+}
+.show-card-bg{
+  max-height: 87vh;
+  margin-top: -40px;
+  width: 89%;
+  margin-top:10px;
+  border-radius: 38px;
+  margin-right: 15px;
+  margin-left: 8px;
+  margin-top:10px;
+  overflow-y: auto;
+}
+.show-card-bg::-webkit-scrollbar{
+  display: none;
+}
+.reviews-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    word-wrap: break-word;
+
+
+}
+.reviews-container p{
+  word-wrap: break-word;
+}
+.reviews-container  h2{
+  border-bottom: 2px solid white;
 }

@@ -27,6 +27,7 @@ const Personalinfocontent = (props) => {
 
                   console.log("file",file)
                 let resp =   await UploadImage(file,"cover");
+                console.log("resp",resp)
                 if(resp !== ""){
                   setCard({
                     ...card,
