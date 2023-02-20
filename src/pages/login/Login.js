@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../../components/navbar/Navbar";
-import {  signInWithEmailAndPassword } from "firebase/auth";
+import {  browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import "./login.css";
 import { AiFillInstagram, AiOutlineDribbble } from "react-icons/ai";
 import { BsTwitter, BsYoutube } from "react-icons/bs";
 import { auth } from "../../firebase";
 import toastErrors from "../../components/errorMessages/toastErrors";
 import { ToastContainer } from "react-toastify";
+import { ColorRing } from "react-loader-spinner";
 export const Login = () => {
   const [login, setLogin] = useState({ userEmail: "", userPassword: "" });
+  const [isLoading,setIsloading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -20,16 +22,21 @@ export const Login = () => {
 
   const handleSubmit = (event) => {
 
-    console.log(login);
+    setIsloading(true);
+    const auth = getAuth();
     event.preventDefault();
-    signInWithEmailAndPassword(auth,login.userEmail,login.userPassword).then(()=>{
-      navigate("/");
-      
-
+    setPersistence(auth, browserSessionPersistence).then(()=>{
+       signInWithEmailAndPassword(auth,login.userEmail,login.userPassword).then(()=>{
+        setIsloading(false);
+        
+        navigate("/");
+       })
     }).catch((err)=>{
         console.log(err);
       const errorMessage = err.message;
       toastErrors(errorMessage);
+    setIsloading(false);
+
     })
      
   };
@@ -81,19 +88,28 @@ export const Login = () => {
              />
        </div>
 
-       <div className="text-center w-full">
+       <div className="text-center w-full flex justify-center">
        <button
                 type="submit"
                 className="text-white bg-blue-700 focus:ring-4 font-medium rounded-lg text-sm w-64 sm:w-64
                 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 
-                  mb-2
+                  mb-2 flex justify-center
                 "
               
 
             
-                
+                disabled ={isLoading}
                 >
-             Login
+             {isLoading  ?  
+             <ColorRing
+              visible={true}
+              height="25"
+            width="25"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/> : "Login"}
               </button>
        </div>
           

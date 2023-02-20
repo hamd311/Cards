@@ -9,7 +9,14 @@ import { useEffect } from "react";
 import { addCardsData } from "../../controller/Cards";
 import { useNavigate } from "react-router";
 
-const Contactinfoconent = ({card,setCard,id}) => {
+const Contactinfoconent = ({card,setCard,id,
+  coverImage,setCoverImg,
+  profileImage,
+  setProfileImage,
+  setSocialQuickAccess,
+  socialQuickAccess,
+  theme1Icons
+}) => {
   const [openState, setOpenState] = useState([false, false, false]);
 
   const [personalContent, setPersonalContent] = useState({
@@ -54,9 +61,13 @@ const Contactinfoconent = ({card,setCard,id}) => {
               personalContent={personalContent}
               setPersonalContent={setPersonalContent}
               handleFormChange={handleFormChange}
-
               card={card}
               setCard={setCard}
+              coverImage={coverImage}
+              setCoverImg={setCoverImg}
+  
+              profileImage ={profileImage}
+              setProfileImage={setProfileImage}
             />
           }
         />
@@ -69,6 +80,11 @@ const Contactinfoconent = ({card,setCard,id}) => {
             <Socialcontent iconIndex={iconIndex} setIconIndex={setIconIndex}
             card={card}
             setCard={setCard}
+       
+            setSocialQuickAccess={setSocialQuickAccess}
+
+            socialQuickAccess ={socialQuickAccess}
+            theme1Icons ={theme1Icons}
             />
           }
         />
@@ -86,10 +102,7 @@ const Contactinfoconent = ({card,setCard,id}) => {
 
       <div className="flex justify-center w-full sm:w-2/3 mb-10">
         <button
-          className="text-white  sm:font-medium sm:text-lg w-full bg-[#8C30F5] hover:bg-[#8C30F5]-800 focus:outline-none focus:ring-4 focus:ring-purple-300  rounded-full  px-5 py-2 sm:py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-[#8C30F5] dark:focus:ring-purple-900 w-fit 
-        
-          
-        "
+          className="text-white  sm:font-medium sm:text-lg w-full bg-[#8C30F5] hover:bg-[#8C30F5]-800 focus:outline-none focus:ring-4 focus:ring-purple-300  rounded-full  px-5 py-2 sm:py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-[#8C30F5] dark:focus:ring-purple-900 w-fit"
           onClick={handleClick}
         >
           SAVE CHANGES

@@ -22,7 +22,11 @@ import Snapchat from "../../assets/icons/Snapchat.svg";
 import Skype from "../../assets/icons/Skype.svg";
 import "./Iconboard.css";
 const Iconboard = (props) => {
-  const { setShowModal,listingIcons,setCard,card} = props;
+  const { setShowModal,listingIcons,setCard,card,
+    setSocialQuickAccess,
+    socialQuickAccess,
+    theme1Icons
+  } = props;
   const icons = [
     { icon: emailIcon1, name: "Email", color: "#2566B3" },
     { icon: facebookIcon, name: "Facebook", color: "#2566B3" },
@@ -46,7 +50,25 @@ const Iconboard = (props) => {
     { icon: Skype, name: "Skype", color: "#2566B3" },
   ];
 
-  const handleClick = (id) => {
+  const findIcon = (icon)=>{
+
+      console.log("theme1Icons",theme1Icons,icon);
+
+     let result = theme1Icons.filter((theme1Icon)=>{
+      
+      return theme1Icon.name.toLowerCase()==icon.name.toLowerCase();
+      });
+        if(result[0]){
+          return result[0]
+        }
+  
+
+  }
+
+  const handleClick = (id,icon) => {
+
+    console.log("ididididii",id);
+   
     setShowModal(false);
     let temp =   props.iconIndex;
 
@@ -58,22 +80,28 @@ const Iconboard = (props) => {
      );
      props.setIconIndex([
       ...temp
-     ])
+     ]);
 
-   
-    
-     temp.push({
-         icon:icons[props.iconIndex],
-         link:""
-     })
+     let iconObj = findIcon(icon);
+     iconObj= {
+      ...iconObj,
+      iconLink:""
+     }
+     console.log("iconObj",iconObj)
+     let temp2 = socialQuickAccess;
 
-     let tempArr = listingIcons[id];
-     console.log("tempArr",tempArr)
+     temp2.push(iconObj);
+
+
+
  
-     setCard({
-       ...card,
-       socialQuickAccess:temp
-     })
+    //  setCard({
+    //    ...card,
+    //    socialQuickAccess:temp
+    //  })
+    setSocialQuickAccess([
+      ...temp2
+    ])
     // props.setIconIndex((iconIndex) => [{...props.iconIndex, 
     //    index:id}]);
   };
@@ -87,7 +115,7 @@ const Iconboard = (props) => {
         return (
           <div
             className="flex flex-col items-center justify-center text-sm"
-            onClick={() => handleClick(index)}
+            onClick={() => handleClick(index,icon)}
           >
             <img
               src={icon.icon}

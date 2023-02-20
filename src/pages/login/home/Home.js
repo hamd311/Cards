@@ -33,9 +33,7 @@ export const Home = () => {
     }
     fetchData();
 
-  }, [
-
-  ]);
+  }, []);
 
       console.log(auth.currentUser);
   const navigate = useNavigate();
@@ -100,7 +98,11 @@ export const Home = () => {
               </div>
   
               <div className="grid lg:grid-cols-4 xl:grid-cols-4 md:grid-cols-3 sm:justify-none justify-center sm:grid-cols-2  gap-4 w-4/5 mx-auto sm:mx-none">
-                <div className=" my-4 cursor-pointer ">
+                <div className=" my-4 cursor-pointer "
+                 onClick={()=>{
+                  navigate("/edit/new")
+                 }}
+                  >
                   <img src={addCard} alt="Add card " />
                 </div>
   

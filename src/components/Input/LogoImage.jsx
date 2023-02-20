@@ -1,7 +1,7 @@
 import React from "react";
 import uploadImage from "../../assets/images/fileUpload.png";
 
-const FileInput = ({OnFileChange}) => {
+const LogoImage = ({OnFileChange}) => {
   return (
     <div className="flex justify-center items-center w-full  ">
       <label
@@ -48,4 +48,4 @@ const FileInput = ({OnFileChange}) => {
   );
 };
 
-export default FileInput;
+export default LogoImage;

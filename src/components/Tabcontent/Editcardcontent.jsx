@@ -9,26 +9,37 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getSingleCard } from "../../controller/Cards";
 
+import img1 from "../../assets/Group 39863.png"
+import img2 from "../../assets/Group 39864.png"
+import getTheme1Icons from "../../controller/uploadImage/getTheme1Icons";
+
 const Editcardcontent = (id) => {
+  const [coverImage,setCoverImg] =useState(img1);
+  const [profileImage,setProfileImage] =useState(img2);
+  const [socialQuickAccess,setSocialQuickAccess] = useState([]);
+  const [theme1Icons,setThemem1Icons] = useState();
+  
+    console.log("socialQuickAccess",socialQuickAccess)
     const[card,setCard] = useState({
       theme:1,
       bgColor:"#000000",
       fontColor:"#ffffff",   
-      coverImage: "",
-      profileImage: "",
+      coverImage: img1,
+      profileImage: img2,
       name: "",
       tile: "",
       busniessName: "",
       phoneNumber: "",
       email: "",
       homePage: "",
-      socialQuickAccess:[],
+      
       links:[{ tile: "Visit our website", url: "www.teamoni.com", icon: "" }],
       article:{
         title:"",
         content:""
       },
-      services:[{ tile: "Ours services", details: "-installatiion " }],
+      services:[{ tile: "Ours services", details: "-installatiion",isOpen:true
+    }],
       gallary:{
         name:"Our Work",
         video:"https://www.youtube.com/watch?v=-mJFZp",
@@ -46,7 +57,12 @@ const Editcardcontent = (id) => {
       
       
     });
-        console.log(card)
+
+    useEffect(async()=>{
+     let theme1Icons = await  getTheme1Icons();
+    setThemem1Icons(theme1Icons[0].icons);
+    },[])
+        
     useEffect(async () => {
 
       const fetchData = async () => {
@@ -91,12 +107,15 @@ const Editcardcontent = (id) => {
           
         });
         }else{
+          console.log("resultresult",result)
           setCard(result);
         }
       }
 
       fetchData();
     } , [])
+
+   
   return (
     <div className="flex h-full w-full flex-col lg:flex-row">
       <button
@@ -123,6 +142,15 @@ const Editcardcontent = (id) => {
             card={card}
             setCard={setCard}
             id ={id}
+            coverImage={coverImage}
+            setCoverImg={setCoverImg}
+            socialQuickAccess={socialQuickAccess}
+            setSocialQuickAccess={setSocialQuickAccess}
+
+            profileImage ={profileImage}
+            setProfileImage={setProfileImage}
+            theme1Icons ={theme1Icons}
+            
             />,
             <Contentcontent 
             card={card}
@@ -137,6 +165,9 @@ const Editcardcontent = (id) => {
         <Viewcard 
              card={card}
              setCard={setCard}
+             coverImage={coverImage}
+             profileImage={profileImage}
+             socialQuickAccess = {socialQuickAccess}
         />
       </div>
     </div>

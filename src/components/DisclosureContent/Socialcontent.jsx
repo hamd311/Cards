@@ -24,6 +24,7 @@ import Snapchat from "../../assets/socialIcons/Snapchat.svg";
 import Skype from "../../assets/socialIcons/skype.svg";
 import Iconboard from "../Iconboard/Iconboard";
 const Socialcontent = (props) => {
+  const {socialQuickAccess,setSocialQuickAccess,theme1Icons} = props;
   const icons = [
     { icon: emailIcon, name: "Email", color: "#2566B3" },
     { icon: facebookIcon, name: "Facebook", color: "#2566B3" },
@@ -56,19 +57,20 @@ const Socialcontent = (props) => {
 
   const handelDelete = (index) => {
     
+
     const oldeData = [...props.iconIndex];
+  
     oldeData.splice(index, 1);
 
     props.setIconIndex([...oldeData]);
+    
+    let temp = [...socialQuickAccess];
+    temp.splice(index,1);
+    setSocialQuickAccess([...temp]);
   };
   useEffect(()=>{
 
-    if(props.iconIndex.length > 0){
-
-    
-
-  
-  }
+    if(props.iconIndex.length > 0){}
  
 },[props.iconIndex])
 
@@ -87,12 +89,14 @@ const Socialcontent = (props) => {
               color={icons[item.index].color}
               handelDelete={handelDelete}
               onChange = {(e)=>{
-                let temp = card.socialQuickAccess;
-                temp[index].link =e.target.value.trim();
-                setCard({
-                  ...card,
-                  socialQuickAccess:temp
-                })
+                let temp = socialQuickAccess;
+                temp[index] ={
+                  ...temp[index],
+                  iconLink:e.target.value.trim()
+                }
+                setSocialQuickAccess([
+                ...temp
+                ])
               }}
             />
           );
@@ -107,6 +111,10 @@ const Socialcontent = (props) => {
             listingIcons= {icons}
             card={card}
             setCard={setCard}
+            setSocialQuickAccess={setSocialQuickAccess}
+
+            socialQuickAccess ={socialQuickAccess}
+            theme1Icons= {theme1Icons}
           />
         )}
 

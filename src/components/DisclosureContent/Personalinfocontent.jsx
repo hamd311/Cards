@@ -3,10 +3,12 @@ import { useState } from "react";
 import UploadImage from "../../controller/uploadImage/UploadImage";
 import FileInput from "../Input/FileInput";
 import Input from "../Input/Input";
+import LogoImage from "../Input/LogoImage";
 
 const Personalinfocontent = (props) => {
 
-    const {card,setCard}  = props;  
+    const {card,setCard,coverImage,setCoverImg,profileImage,
+      setProfileImage}  = props;  
   return (
     <div className="w-full">
       <div className="lg:w-4/5 w-full p-4">
@@ -23,16 +25,14 @@ const Personalinfocontent = (props) => {
                 Cover Image
               </p>
               <FileInput 
-                onChange = { async(file)=>{
+              OnFileChange = { async(file)=>{
 
-                  console.log("file",file)
-                let resp =   await UploadImage(file,"cover");
+               
+                let resp =   await UploadImage(file);
                 console.log("resp",resp)
                 if(resp !== ""){
-                  setCard({
-                    ...card,
-                    coverImage:resp
-                  })
+                  setCoverImg(resp);
+                  return
                 }
                 }}
               />
@@ -45,17 +45,15 @@ const Personalinfocontent = (props) => {
               >
                 Logo/Profile
               </p>
-              <FileInput 
+              <LogoImage 
               
-              onChange = { async(file)=>{
-
+              OnFileChange = { async(file)=>{
+                console.log("Setting profile image",file)
                 console.log("file",file)
-              let resp =   await UploadImage(file,"logo");
+              let resp =   await UploadImage(file);
               if(resp !== ""){
-                setCard({
-                  ...card,
-                  profileImage:resp
-                })
+                setProfileImage(resp );
+                return
               }
               }}
               />

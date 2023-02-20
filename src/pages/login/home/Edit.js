@@ -8,13 +8,20 @@ const Edit = (props) => {
   const [headerText, setHeaderText] = useState("Hugo c1");
   const [docId, setDocId] = useState("");
    useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-
+   
+  
+  if(window.location.pathname.split("/").pop() !=="new"){
     const id = query.get("id");
-
     console.log("id is: ", id);
     setDocId(id);
     setHeaderText(id);
+    const query = new URLSearchParams(window.location.search);
+  }else{
+    setHeaderText("New card");
+  }
+ ;
+
+    
   }, []);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);

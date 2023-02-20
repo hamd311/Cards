@@ -7,6 +7,7 @@ import Account from "./pages/login/home/Account";
 import Dashboard from "./pages/login/home/Dashboard";
 import Edit from "./pages/login/home/Edit";
 import Cardview from "./pages/login/home/Cardview";
+import MakeCard from "./components/Tabcontent/MakeCard";
 
 function App() {
        
@@ -18,7 +19,8 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/account" element={<Account />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/edit" element={<Edit />}></Route>
+        <Route path="/edit/*" element={<Edit />}></Route>
+        <Route path="/makecard" element={<MakeCard />}></Route>
         <Route path="/view" element={<Cardview />}></Route>
       </Routes>
     </Router>

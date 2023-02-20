@@ -14,6 +14,7 @@ import { toast, ToastContainer } from "react-toastify";
 import toastErrors from "../../components/errorMessages/toastErrors";
 
 import "react-toastify/dist/ReactToastify.css";
+import { ColorRing } from "react-loader-spinner";
 
 // const auth = getAuth();
 export const Register = () => {
@@ -21,6 +22,7 @@ export const Register = () => {
      const navigate = useNavigate();
 
      const[passMatchError,setPassMatchError]  = useState(false);
+     const[isLoading,setIsloading]  = useState(false);
      const[registerUserState,setRegisterUserState]  = useState({
 
       firstName:"",
@@ -47,10 +49,14 @@ export const Register = () => {
    
      const registerUser = ()=>{
         
-      console.log(email,password);
+      setIsloading(true);
+
+    
 
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+
+        setIsloading(false);
         // Signed in 
         const user = userCredential.user;
         toast.success('🦄 Account Created ', {
@@ -73,6 +79,7 @@ export const Register = () => {
         const errorMessage = error.message;
        
         toastErrors(errorMessage);
+        setIsloading(false);
        
         // ..
       });
@@ -278,7 +285,16 @@ export const Register = () => {
                 disabled={passMatchError ? true :false}
                 
                 >
-                Submit
+                 {isLoading  ?  
+             <ColorRing
+              visible={true}
+              height="25"
+            width="25"
+  ariaLabel="blocks-loading"
+  wrapperStyle={{}}
+  wrapperClass="blocks-wrapper"
+  colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+/> : "Login"}
               </button>
             </form>
           </div>

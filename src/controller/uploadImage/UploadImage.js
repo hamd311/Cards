@@ -7,7 +7,7 @@ const UploadImage =  async (file,cover) => {
     const storage = getStorage();
    let ext = file.name.split(".").pop();
     console.log("file",ext)
-    let imageRef = ref(storage,`cards/${cover}/${id}.${ext}`);
+    let imageRef = ref(storage,`${id}.${ext}`);
     // 'file' comes from the Blob or File API
 
     let resp = await   uploadBytes(imageRef, file);
