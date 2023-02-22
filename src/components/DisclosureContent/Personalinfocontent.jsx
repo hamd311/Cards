@@ -26,8 +26,9 @@ const Personalinfocontent = (props) => {
               </p>
               <FileInput 
               OnFileChange = { async(file)=>{
+                console.log("cover image clicked")
 
-               
+              
                 let resp =   await UploadImage(file);
                 console.log("resp",resp)
                 if(resp !== ""){
@@ -47,7 +48,9 @@ const Personalinfocontent = (props) => {
               </p>
               <LogoImage 
               
-              OnFileChange = { async(file)=>{
+              OnFileChange2 = { async(file)=>{
+                console.log(" Logo/Profile clicked")
+
                 console.log("Setting profile image",file)
                 console.log("file",file)
               let resp =   await UploadImage(file);

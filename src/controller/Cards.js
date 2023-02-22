@@ -22,6 +22,9 @@ export const addCardsData = async (data,id) => {
 
   
  export const getSingleCard = async (id) => {
+
+
+  try{
   console.log("No such document!", id);
 
   const docRef = doc(db, "cards", id.id.toString());
@@ -34,5 +37,10 @@ if (docSnap.exists()) {
   // doc.data() will be undefined in this case
   console.log("No such document!");
   return "";
+  
 }
+  }catch(ex){
+    console.log("error", ex);
+
+  }
 };
