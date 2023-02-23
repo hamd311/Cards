@@ -10,8 +10,11 @@ import { addAnalytics } from "../../controller/Analytics";
 const Viewcard = (props) => {
   const {setCard} = props;
   const [id, setId] = useState();
-    const {socialQuickAccess}  = props;
-  console.log("propssocialQuickAccess",socialQuickAccess)
+    const {socialQuickAccess,services,
+      gallaryImages,
+      setGallaryImages
+    }  = props;
+ 
   // useEffect(() => {
   //   const query = new URLSearchParams(window.location.search);
 
@@ -315,14 +318,22 @@ const Viewcard = (props) => {
                               <div className="head"
                                 onClick={()=>{
           let temp  = props.card?.services;
-          // temp[index] = !temp[index].isOpen;
+            console.log(temp)
+          temp[index] = {
+            ...temp[index],
+           isOpen: !temp[index].isOpen,
+
+          };
+     
                                   setCard({
                                     ...props.card,
-                                    services:temp
+                                    services:[...temp]
                                   })
                                 }}
                               >
-                              <svg width="20" height="20" viewBox="0 0 405 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <svg
+                           className={`${item.isOpen ? "rotate-icon" :""}`}
+                              width="20" height="20" viewBox="0 0 405 480" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M33.666 412.61V67.3893C33.666 41.0863 62.7043 25.1459 84.8953 39.2673L356.139 211.877C376.723 224.977 376.723 255.024 356.139 268.124L84.8953 440.734C62.7043 454.854 33.666 438.914 33.666 412.61Z" stroke="white" stroke-width="66.6667" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
@@ -330,6 +341,7 @@ const Viewcard = (props) => {
                               
                               </div>
                               {
+                                item.isOpen &&
                               <div className="body">
                     
                         <p>{item?.details}</p>
@@ -351,13 +363,28 @@ const Viewcard = (props) => {
                     {
                       props.card?.gallary?.video &&
                     <video  controls>
-                      <source src={props.card?.gallary?.video} type="video/mp4" />
+                      <source src={props.card?.gallary?.video} 
+                       />
                      
                       Your browser does not support the video tag.
                     </video>
                     }
-
+ 
                    
+                  </div>
+                  <div className="gallary-images">
+
+
+ {
+    gallaryImages.map((link,i)=>{
+      return(
+
+ 
+    <img src={link}   key={i}   alt="img"/>
+
+    )
+    })
+  }
                   </div>
                   {
                     props?.card?.reviews &&

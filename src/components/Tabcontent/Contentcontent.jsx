@@ -6,7 +6,7 @@ import Leadgenerationcontent from "../DisclosureContent/Leadgenerationcontent";
 import Reviewcontent from "../DisclosureContent/Reviewcontent";
 import Servicescontent from "../DisclosureContent/Servicescontent";
 
-const Contentcontent = ({card,setCard}) => {
+const Contentcontent = ({card,setCard, gallaryImages,setGallaryImages }) => {
   return (
     <div className="p-4 h-fit">
       <div className="my-4">
@@ -27,6 +27,8 @@ const Contentcontent = ({card,setCard}) => {
         <Disclosurebutton text="Gallery " component={<Gallerycontent 
             card={card}
             setCard={setCard}
+            gallaryImages={gallaryImages}
+            setGallaryImages={setGallaryImages} 
         />} />
       </div>
       <div className="my-4">

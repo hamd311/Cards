@@ -7,7 +7,9 @@ import ButtonFileInput from "../Input/ButtonFileInput";
 import Draggable from "react-draggable";
 import UploadImage from "../../controller/uploadImage/UploadImage";
 
-const Gallerycontent = ({card,setCard}) => {
+const Gallerycontent = ({card,setCard,
+  gallaryImages,setGallaryImages 
+}) => {
   return (
     <div className="w-full">
       <div className="w-4/5 mx-auto">
@@ -34,7 +36,7 @@ const Gallerycontent = ({card,setCard}) => {
             <div className="w-full">
               <Inputgroup
                 label={"Video URL"}
-                value={"Video URL"}
+                value={card.gallary?.video}
                 id={"videoUrl"}
                 name={"videoUrl"}
                 onChange={(e)=>{
@@ -60,80 +62,73 @@ const Gallerycontent = ({card,setCard}) => {
             <div className="w-full grid grid-cols-3 gap-4 ">
               <div className="w-full h-full">
                 <FileInput 
+
                   
-                  onChange ={
+                  
+                  OnFileChange ={
                     async (file)=>{
-                 
-
-                   let resp = await  UploadImage(file,"thumbnil");
-                   let temp = card.gallary;
-                   temp.images.push(temp);
 
                  
-                   setCard({
-                    ...card,
-                    gallary:temp
-                   })
-            
-                    }
+
+                   let resp = await  UploadImage(file);
+                   let temp =  [...gallaryImages];
+                   temp.push(resp);
+
+                   setGallaryImages([...temp])
+                   }
                    }
                 />
               </div>
               <div className="w-full h-full">
                 <FileInput 
                 
-                onChange ={
+                OnFileChange ={
                   async (file)=>{
-               
-
-                 let resp = await  UploadImage(file,"thumbnil");
-                 let temp = card.gallary;
-                 temp.images.push(temp);
 
                
-                 setCard({
-                  ...card,
-                  gallary:temp
-                 })
+
+                 let resp = await  UploadImage(file);
+                 let temp =  [...gallaryImages];
+                 temp.push(resp);
+
+                 setGallaryImages([...temp])
+                
           
                   }
-                 }/>
+                 }
+                 />
               </div>
               <div className="w-full h-full">
                 <FileInput 
-                   onChange ={
-                    async (file)=>{
-                 
-
-                   let resp = await  UploadImage(file,"thumbnil");
-                   let temp = card.gallary;
-                   temp.images.push(temp);
-
-                 
-                   setCard({
-                    ...card,
-                    gallary:temp
-                   })
-            
-                    }
-                   }
+                    OnFileChange ={
+                      async (file)=>{
+  
+                   
+  
+                     let resp = await  UploadImage(file);
+                     let temp =  [...gallaryImages];
+                     temp.push(resp);
+  
+                     setGallaryImages([...temp])
+                    
+              
+                      }
+                     }
                 />
               </div>
               <div className="col-span-2 row-span-2 w-full h-full">
                 <FileInput 
-                   onChange ={
+                    OnFileChange ={
                     async (file)=>{
-                 
-
-                   let resp = await  UploadImage(file,"thumbnil");
-                   let temp = card.gallary;
-                   temp.images.push(temp);
 
                  
-                   setCard({
-                    ...card,
-                    gallary:temp
-                   })
+
+                   let resp = await  UploadImage(file);
+                   let temp =  [...gallaryImages];
+                   temp.push(resp);
+
+                   setGallaryImages([...temp])
+                  
             
                     }
                    }
@@ -162,19 +157,17 @@ const Gallerycontent = ({card,setCard}) => {
               </div>
               <div className="w-full h-full">
                 <FileInput 
-                   onChange ={
+                    OnFileChange ={
                     async (file)=>{
-                 
-
-                   let resp = await  UploadImage(file,"thumbnil");
-                   let temp = card.gallary;
-                   temp.images.push(temp);
 
                  
-                   setCard({
-                    ...card,
-                    gallary:temp
-                   })
+
+                   let resp = await  UploadImage(file);
+                   let temp =  [...gallaryImages];
+                   temp.push(resp);
+
+                   setGallaryImages([...temp])
+                  
             
                     }
                    }
@@ -182,19 +175,17 @@ const Gallerycontent = ({card,setCard}) => {
               </div>
               <div className="w-full h-full">
                 <FileInput 
-                   onChange ={
+                    OnFileChange ={
                     async (file)=>{
-                 
-
-                   let resp = await  UploadImage(file,"thumbnil");
-                   let temp = card.gallary;
-                   temp.images.push(temp);
 
                  
-                   setCard({
-                    ...card,
-                    gallary:temp
-                   })
+
+                   let resp = await  UploadImage(file);
+                   let temp =  [...gallaryImages];
+                   temp.push(resp);
+
+                   setGallaryImages([...temp])
+                  
             
                     }
                    }

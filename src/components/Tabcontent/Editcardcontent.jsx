@@ -19,7 +19,11 @@ const Editcardcontent = (id) => {
   const [socialQuickAccess,setSocialQuickAccess] = useState([]);
   const [theme1Icons,setThemem1Icons] = useState();
   
-    console.log("socialQuickAccess",socialQuickAccess)
+  const [gallaryImages,setGallaryImages] = useState([]);
+
+  console.log("gallaryImagesgallaryImages",gallaryImages);
+
+   
     const[card,setCard] = useState({
       theme:1,
       bgColor:"#000000",
@@ -88,7 +92,9 @@ const Editcardcontent = (id) => {
             title:"",
             content:""
           },
-          services:[{ tile: "Ours services", details: "-installatiion " }],
+          services:[{ tile: "Ours services", details: "-installatiion",
+          isOpen:false
+        }],
           gallary:{
             name:"Our Work",
             video:"https://www.youtube.com/watch?v=-mJFZp",
@@ -155,6 +161,8 @@ const Editcardcontent = (id) => {
             <Contentcontent 
             card={card}
             setCard={setCard}
+            gallaryImages={gallaryImages}
+            setGallaryImages = {setGallaryImages}
             />,
           ]}
           activeStyle={"lg:text-[25px] text-[18px]"}
@@ -168,6 +176,8 @@ const Editcardcontent = (id) => {
              coverImage={coverImage}
              profileImage={profileImage}
              socialQuickAccess = {socialQuickAccess}
+             gallaryImages={gallaryImages}
+             setGallaryImages = {gallaryImages}
         />
       </div>
     </div>

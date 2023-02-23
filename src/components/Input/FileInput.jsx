@@ -11,6 +11,7 @@ const FileInput = ({OnFileChange}) => {
 
         onChange={(e)=>{
            
+            console.log(e.target.value)
           OnFileChange(e.target.files[0])
        }}
       >

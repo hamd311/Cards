@@ -26,14 +26,14 @@ export const Home = () => {
   const [searchCards, setSearchCards] = useState("");
 
 
-  useEffect( () => {
-   const fetchData = async () => {
-      const documents =await getAllCards();
-      setCardsData(documents);
-    }
-    fetchData();
+  // useEffect( () => {
+  //  const fetchData = async () => {
+  //     const documents =await getAllCards();
+  //     setCardsData(documents);
+  //   }
+  //   fetchData();
 
-  }, []);
+  // }, []);
 
       console.log(auth.currentUser);
   const navigate = useNavigate();
